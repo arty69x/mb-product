@@ -4,14 +4,10 @@ import Footer from './Footer';
 
 export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header />
-      <main>
-        <section>
-          <div className="container mx-auto px-4">{children}</div>
-        </section>
-      </main>
+      <main className="flex-1">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }
