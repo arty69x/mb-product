@@ -1,15 +1,17 @@
 import { ReactNode } from 'react';
-import { Header } from './Header';
-import { Footer } from './Footer';
+import Header from './Header';
+import Footer from './Footer';
 
-type Props = { children: ReactNode };
-
-export function SiteLayout({ children }: Props) {
+export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#efefef] text-[#111]">
+    <>
       <Header />
-      {children}
+      <main>
+        <section>
+          <div className="container mx-auto px-4">{children}</div>
+        </section>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
