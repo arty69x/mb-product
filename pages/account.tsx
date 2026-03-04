@@ -1,6 +1,16 @@
-import { SiteLayout } from '@/src/components/Layout/SiteLayout';
-import { FormPage } from '@/src/components/UI/Templates';
+import SiteLayout from '@/src/components/Layout/SiteLayout';
+
+const sections = ['Orders', 'Profile', 'Addresses', 'Wishlist'];
 
 export default function AccountPage() {
-  return <SiteLayout><main><FormPage title="My Account"><form className="space-y-4"><input className="w-full border p-3" placeholder="Email" /><input className="w-full border p-3" placeholder="Password" type="password" /><button className="bg-black px-6 py-3 text-white">Sign In</button></form></FormPage></main></SiteLayout>;
+  return (
+    <SiteLayout>
+      <section className="py-8">
+        <h1 className="mb-6 text-3xl font-semibold">Account</h1>
+        <div className="grid gap-4 md:grid-cols-2">
+          {sections.map((section) => <div key={section} className="rounded-md border border-borderLight p-4">{section}</div>)}
+        </div>
+      </section>
+    </SiteLayout>
+  );
 }

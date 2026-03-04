@@ -1,20 +1,14 @@
-import type { Product } from '@/src/lib/data/site';
-import { ProductCard } from './ProductCard';
+import type { Product } from '@/src/types';
+import ProductCard from './ProductCard';
 
-type Props = { products: Product[] | null | undefined };
-
-export function ProductGrid({ products }: Props) {
-  if (!products) {
-    return <p role="status">Loading products…</p>;
+export default function ProductGrid({ products }: { products: Product[] }) {
+  const safeProducts = Array.isArray(products) ? products : [];
+  if (safeProducts.length === 0) {
+    return <p className="py-8 text-secondaryText">No products available.</p>;
   }
-
-  if (!Array.isArray(products) || products.length === 0) {
-    return <p role="status">No products available.</p>;
-  }
-
   return (
-    <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
-      {products.map((product) => (
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      {safeProducts.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
